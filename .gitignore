@@ -1,5 +1,6 @@
 # files
 *~
+*.elc
 places
 saved-places
 
