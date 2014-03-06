@@ -6,6 +6,7 @@
 (require 'my-gui)
 (require 'my-keymaps)
 
+;;; Introduced by emacs
 (put 'narrow-to-region 'disabled nil)
 
 (custom-set-variables
