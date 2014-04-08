@@ -5,6 +5,7 @@
 (require 'my-defun)
 (require 'my-gui)
 (require 'my-keymaps)
+(require 'my-hooks)
 
 ;;; Introduced by emacs
 (put 'narrow-to-region 'disabled nil)
