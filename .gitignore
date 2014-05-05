@@ -4,8 +4,8 @@
 places
 projectile.*
 saved-places
+**/archive-contents
 
 # directories
 auto-save-list
 backups
-elpa
