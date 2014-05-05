@@ -4,15 +4,17 @@
   (set-fill-column 80)
   (auto-fill-mode t)
   (hs-minor-mode t)
-  (which-function-mode t) 
+  (which-function-mode t)
+  (yas-minor-mode t)
   (setq-default header-line-format
                 '((which-func-mode ("" which-func-format " "))))
   (setq mode-line-misc-info
         (assq-delete-all 'which-func-mode mode-line-misc-info))
-  (turn-on-ctags-auto-update-mode)
-  (projectile-mode t))
+  (turn-on-ctags-auto-update-mode))
 
-(add-hook 'c-mode-hook 'my-c-mode-hook)
+;; (add-hook 'c++-mode-hook 'projectile-on)
+;; (add-hook 'c-mode-hook 'projectile-on)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+(add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (provide 'my-hooks)

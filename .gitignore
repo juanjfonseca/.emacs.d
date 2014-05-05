@@ -1,9 +1,11 @@
 # files
-*~
 *.elc
+*~
 places
+projectile.*
 saved-places
 
 # directories
 auto-save-list
 backups
+elpa

@@ -21,5 +21,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(provide 'my-customizations)
+;; Ispell location
+(setq ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
 
+(provide 'my-customizations)
