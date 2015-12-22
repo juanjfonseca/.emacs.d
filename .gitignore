@@ -5,6 +5,7 @@ places
 projectile.*
 saved-places
 **/archive-contents
+elpa/*.txt
 
 # directories
 auto-save-list
