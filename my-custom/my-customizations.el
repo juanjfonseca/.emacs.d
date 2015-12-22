@@ -21,7 +21,10 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Ispell location
-(setq ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
+;; Ispell location. The file must be in $PATH.
+(setq ispell-program-name "aspell")
+
+;; Show current function name in all modes
+(which-function-mode t)
 
 (provide 'my-customizations)
