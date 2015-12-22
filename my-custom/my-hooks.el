@@ -4,7 +4,6 @@
   (set-fill-column 80)
   (auto-fill-mode t)
   (hs-minor-mode t)
-  (which-function-mode t)
   (yas-minor-mode t)
   (setq-default header-line-format
                 '((which-func-mode ("" which-func-format " "))))
