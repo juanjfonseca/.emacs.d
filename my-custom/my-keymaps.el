@@ -6,6 +6,10 @@
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 (global-set-key (kbd "C-M-]") '(lambda() (interactive) (beginning-of-defun -1)))
 
+;; Remap zap-to-char to zzz-to-char
+(global-set-key "\M-z" 'zzz-to-char)
+(global-set-key "\M-Z" 'zzz-up-to-char)
+
 ;; from Bozhidar Batsov Emacs Redux
 (global-set-key (kbd "C-o")   'smart-open-line)
 (global-set-key (kbd "C-S-o") 'smart-open-line-above)
