@@ -1,11 +1,11 @@
 # files
+**/archive-contents
 *.elc
 *~
-places
-projectile.*
-saved-places
-**/archive-contents
 elpa/*.txt
+ido.last
+places
+saved-places
 
 # directories
 auto-save-list
