@@ -1,5 +1,6 @@
 # files
 **/archive-contents
+**/archive-contents.signed
 *.elc
 *~
 elpa/*.txt
@@ -10,3 +11,5 @@ saved-places
 # directories
 auto-save-list
 backups
+server
+elpa/archives 
