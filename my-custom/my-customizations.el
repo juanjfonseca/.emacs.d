@@ -32,7 +32,4 @@
 ;; Ispell location. The file must be in $PATH.
 (setq ispell-program-name "aspell")
 
-;; Show current function name in all modes
-(which-function-mode t)
-
 (provide 'my-customizations)
