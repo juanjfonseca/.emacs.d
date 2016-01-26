@@ -7,11 +7,4 @@
 (size-indication-mode t)
 (load-theme 'solarized-dark 1)
 
-;; Show current function on top line.
-(setq-default header-line-format
-              '((which-function-mode ("" which-func-format " "))))
-(setq mode-line-misc-info
-      (assq-delete-all 'which-function-mode mode-line-misc-info))
-(which-function-mode t)
-
 (provide 'my-gui)

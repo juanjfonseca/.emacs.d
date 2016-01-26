@@ -5,6 +5,7 @@
   (auto-fill-mode t)
   (hs-minor-mode t)
   (yas-minor-mode t)
+  (which-function-mode t)
   )
 
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
