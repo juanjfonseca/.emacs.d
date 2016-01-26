@@ -1,3 +1,4 @@
+
 ;;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -6,12 +7,19 @@
 
 (require 'generic-x)        ; Use Generic Modes For Obscure Languages.
 
+;;; Start the server once. 
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+;;; Introduced by emacs
+(put 'narrow-to-region 'disabled nil)
+
 ;; Save privious location in files
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file "~/.emacs.d/saved-places")
 
-(server-start)
 (delete-selection-mode t)      ; Delete Selection on Insert
 (setq inhibit-splash-screen t) ; hide welcome screen
 
