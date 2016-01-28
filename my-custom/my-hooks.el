@@ -1,4 +1,5 @@
 (defun my-c-mode-hook ()
+  "Setup C/C++ buffer indentation style and features."
   (c-set-style "stroustrup")
   (c-set-offset 'case-label '+) ; indent case labels by c-indent-level
   (set-fill-column 80)
