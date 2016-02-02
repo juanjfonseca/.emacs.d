@@ -6,4 +6,5 @@
 (require 'my-defun)
 (require 'my-gui)
 (require 'my-keymaps)
+(require 'my-modes)
 (require 'my-hooks)
