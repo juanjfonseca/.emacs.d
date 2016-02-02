@@ -4,8 +4,6 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(require 'generic-x)        ; Use Generic Modes For Obscure Languages.
-
 ;;; Start the server once. 
 (require 'server)
 (unless (server-running-p)

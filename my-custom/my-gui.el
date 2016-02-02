@@ -5,6 +5,5 @@
 (setq delete-by-moving-to-trash t) ; Move deleted files to Recycle.
 (setq visible-bell t)
 (size-indication-mode t)
-(load-theme 'wombat 1)
 
 (provide 'my-gui)
