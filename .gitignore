@@ -3,6 +3,7 @@
 **/archive-contents.signed
 *.elc
 *~
+bookmarks
 elpa/*.txt
 ido.last
 places
