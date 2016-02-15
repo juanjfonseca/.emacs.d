@@ -44,15 +44,15 @@
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 
 (autoload 'gitattributes-mode
-  "gitattributes-mode.elc" "Enables the mode for .gitattributes, .git/info/attributes, and git/attributes files." t nil)
+  "gitattributes-mode.el" "Enables the mode for .gitattributes, .git/info/attributes, and git/attributes files." t nil)
 (dolist (pattern (list "/\\.gitignore\\'" "/\\.git/info/exclude\\'" "/git/ignore\\'" "/git/attributes\\'")) (add-to-list 'auto-mode-alist (cons pattern 'gitattributes-mode)))
 
 (autoload 'gitconfig-mode
-  "gitconfig-mode.elc" "Enables the mode for .gitconfig, .git/config, git/config, and .gitmodules files." t nil)
+  "gitconfig-mode.el" "Enables the mode for .gitconfig, .git/config, git/config, and .gitmodules files." t nil)
 (dolist (pattern (list "/\\.gitconfig\\'" "/\\.git/config\\'" "/git/config\\'" "/\\.gitmodules\\'")) (add-to-list 'auto-mode-alist (cons pattern 'gitconfig-mode)))
 
 (autoload 'gitignore-mode
-  "gitignore-mode.elc" "Enables the mode for .gitignore, .git/info/exclude, and git/ignore files." t nil)
+  "gitignore-mode.el" "Enables the mode for .gitignore, .git/info/exclude, and git/ignore files." t nil)
 (dolist (pattern (list "/\\.gitignore\\'" "/\\.git/info/exclude\\'" "/git/ignore\\'")) (add-to-list 'auto-mode-alist (cons pattern 'gitignore-mode)))
 
 ;; (provide 'my-customizations)
