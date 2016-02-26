@@ -36,6 +36,9 @@
 ;; Ispell location. The file must be in $PATH.
 (setq ispell-program-name "aspell")
 
+;; Enable auto-complete on every mode
+(ac-config-default)
+
 ;; Setup Cscope
 (require 'xcscope)
 (cscope-setup)
@@ -221,7 +224,6 @@
   (hs-minor-mode t)
   (yas-minor-mode t)
   (which-function-mode t)
-  (ac-config-default)
   )
 
 (add-hook 'c++-mode-hook 'my-c-mode-hook)

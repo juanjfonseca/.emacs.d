@@ -8,6 +8,7 @@ elpa/*.txt
 ido.last
 places
 saved-places
+ac-comphist.dat
 
 # directories
 auto-save-list
