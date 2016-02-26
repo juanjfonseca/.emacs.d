@@ -11,7 +11,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-;;; Start the server once. 
+;;; Start the server once.
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -114,6 +114,8 @@
 (setq visible-bell t)
 (size-indication-mode t)
 
+(require 'powerline)
+(powerline-default-theme)
 ;; (provide 'my-gui)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -138,6 +140,9 @@
 
 ;; Magit
 (global-set-key (kbd "C-c m") 'magit-status)
+
+;; clang-format
+(global-set-key (kbd "C-c c") 'clang-format-region)
 
 ;; (provide 'my-keymaps)
 
@@ -173,7 +178,7 @@
     "sprintf2" "str2code" "str2int" "strcompare" "strconcat" "strcopy"
     "strinsert" "strjoin" "strlen" "strmatch" "strremove" "strreplace"
     "strscan" "strspecial" "strsplit" "strtrim" "tolower" "toupper"
-    ;;File operation commands 
+    ;;File operation commands
     "dirname" "fileclose" "fileconcat" "filecopy" "filecreate"
     "filedelete" "filelock" "filemarkptr" "fileopen" "filereadln"
     "fileread" "filerename" "filesearch" "fileseek" "fileseekback"
@@ -216,6 +221,7 @@
   (hs-minor-mode t)
   (yas-minor-mode t)
   (which-function-mode t)
+  (ac-config-default)
   )
 
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
@@ -231,10 +237,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (zenburn)))
+ '(clang-format-executable "clang-format-3.8")
+ '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "6a925fdf3a7bf2f3901d8fbc4ef64f9b4b4be2c6bed2b0d49d154db0bec91b33" "68d36308fc6e7395f7e6355f92c1dd9029c7a672cbecf8048e2933a053cf27e6" default))))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "6a925fdf3a7bf2f3901d8fbc4ef64f9b4b4be2c6bed2b0d49d154db0bec91b33" "68d36308fc6e7395f7e6355f92c1dd9029c7a672cbecf8048e2933a053cf27e6" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
