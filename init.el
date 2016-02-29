@@ -103,6 +103,11 @@
     (untabify (point-min) (point-max))
     (delete-trailing-whitespace)))
 
+(defun apx-core ()
+  "Change directory to apx_core"
+  (interactive)
+  (cd "/devspace/apx/apx_core"))
+
 ;; (provide 'my-defun)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -239,6 +244,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
  '(clang-format-executable "clang-format-3.8")
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
@@ -248,7 +255,8 @@
  '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "86a731bda96ed5ed69980b4cbafe45614ec3c288da3b773e4585101e7ece40d2" "133222702a3c75d16ea9c50743f66b987a7209fb8b964f2c0938a816a83379a0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "6a925fdf3a7bf2f3901d8fbc4ef64f9b4b4be2c6bed2b0d49d154db0bec91b33" "68d36308fc6e7395f7e6355f92c1dd9029c7a672cbecf8048e2933a053cf27e6" default)))
+    ("51277c9add74612c7624a276e1ee3c7d89b2f38b1609eed6759965f9d4254369" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "86a731bda96ed5ed69980b4cbafe45614ec3c288da3b773e4585101e7ece40d2" "133222702a3c75d16ea9c50743f66b987a7209fb8b964f2c0938a816a83379a0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "6a925fdf3a7bf2f3901d8fbc4ef64f9b4b4be2c6bed2b0d49d154db0bec91b33" "68d36308fc6e7395f7e6355f92c1dd9029c7a672cbecf8048e2933a053cf27e6" default)))
+ '(fci-rule-color "#073642")
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -273,11 +281,36 @@
    (quote
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c85d17")
+     (60 . "#be730b")
+     (80 . "#b58900")
+     (100 . "#a58e00")
+     (120 . "#9d9100")
+     (140 . "#959300")
+     (160 . "#8d9600")
+     (180 . "#859900")
+     (200 . "#669b32")
+     (220 . "#579d4c")
+     (240 . "#489e65")
+     (260 . "#399f7e")
+     (280 . "#2aa198")
+     (300 . "#2898af")
+     (320 . "#2793ba")
+     (340 . "#268fc6")
+     (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (quote
     (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
