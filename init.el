@@ -103,10 +103,12 @@
     (untabify (point-min) (point-max))
     (delete-trailing-whitespace)))
 
-(defun apx-core ()
+(defun ac ()
   "Change directory to apx_core"
   (interactive)
-  (cd "/devspace/apx/apx_core"))
+  (cd "/devspace/apx/apx_core")
+  (cscope-setup)
+  (cscope-minor-mode))
 
 ;; (provide 'my-defun)
 
