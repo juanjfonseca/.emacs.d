@@ -236,6 +236,19 @@
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
+(font-lock-add-keywords 'c-mode
+                        '(("\\<\\(TODO\\):" 1 font-lock-warning-face prepend)
+                          ("\\<\\(FIXME\\):" 1 font-lock-warning-face prepend)
+                          ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)))
+
+(font-lock-add-keywords 'c++-mode
+                        '(("\\<\\(TODO\\):" 1 font-lock-warning-face prepend)
+                          ("\\<\\(FIXME\\):" 1 font-lock-warning-face prepend)
+                          ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
+                          ("\\<\\(CHECK\\|CHECK_TEXT\\|CHECK_EQUAL\\|CHECK_THROWS\\)\\>" . font-lock-function-name-face)
+                          ("\\<\\(STRCMP_EQUAL\\|LONGS_EQUAL\\|BYTES_EQUAL\\)\\>" . font-lock-function-name-face)
+                          ("\\<\\(POINTERS_EQUAL\\|DOUBLES_EQUAL\\|FAIL\\)\\>" . font-lock-function-name-face)))
+
 ;; (provide 'my-hooks)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -250,6 +263,7 @@
  '(clang-format-executable "clang-format-3.8")
  '(column-number-mode t)
  '(compilation-message-face (quote default))
+ '(cscope-close-window-after-select t)
  '(cscope-truncate-lines nil)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
