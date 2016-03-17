@@ -1,6 +1,6 @@
-;;;
-;;; My custome packages
-;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; My custome packages ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (add-to-list 'load-path "~/.emacs.d/my-custom")
 
 ;;; Load my packages
