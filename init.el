@@ -65,6 +65,7 @@
 (require 'setup-my-modes)
 (require 'setup-my-keybinds)
 (require 'setup-my-defuns)
+(require 'setup-my-gui)
 
 (windmove-default-keybindings)
 
@@ -214,6 +215,7 @@
    (quote
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(magit-diff-use-overlays nil)
+ '(menu-bar-mode nil)
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
@@ -226,6 +228,7 @@
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(tool-bar-mode nil)
+ '(tooltip-mode nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
