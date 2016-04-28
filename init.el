@@ -15,6 +15,12 @@
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
 
+;; Store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -76,7 +82,6 @@
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-my-modes)
@@ -85,9 +90,9 @@
 
 (windmove-default-keybindings)
 
-;; function-args
-;; (require 'function-args)
-;; (fa-config-default)
+function-args
+(require 'function-args)
+(fa-config-default)
 ;; (define-key c-mode-map  [(tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
