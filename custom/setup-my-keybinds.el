@@ -16,7 +16,6 @@
 ;; from Bozhidar Batsov Emacs Redux
 (global-set-key (kbd "C-o")   'smart-open-line)
 (global-set-key (kbd "C-S-o") 'smart-open-line-above)
-(global-set-key (kbd "C-c i") 'find-user-init-file)
 
 ;; Magit
 (global-set-key (kbd "C-c m") 'magit-status)
