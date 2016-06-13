@@ -18,7 +18,7 @@
 (global-set-key (kbd "C-S-o") 'smart-open-line-above)
 
 ;; Magit
-(global-set-key (kbd "C-c m") 'magit-status)
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;; clang-format
 (global-set-key (kbd "C-c c") 'clang-format-region)
