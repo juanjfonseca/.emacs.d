@@ -254,7 +254,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (color-theme-solarized fic-mode fixmee railscasts-theme zenburn-theme clang-format color-theme-sanityinc-solarized evil evil-leader evil-magit evil-smartparens zzz-to-char zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (color-theme-solarized fic-mode fixmee clang-format color-theme-sanityinc-solarized evil evil-leader evil-magit evil-smartparens zzz-to-char zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(size-indication-mode t)
