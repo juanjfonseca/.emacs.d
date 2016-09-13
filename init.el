@@ -7,9 +7,10 @@
 (blink-cursor-mode -1)
 (column-number-mode t)
 (global-linum-mode t)
-(setq delete-by-moving-to-trash t) ; Move deleted files to Recycle.
+(setq delete-by-moving-to-trash t)      ; Delete by moving to trash.
 (setq visible-bell t)
 (size-indication-mode t)
+(global-hl-line-mode t)
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
