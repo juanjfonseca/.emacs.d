@@ -160,6 +160,10 @@
  gdb-show-main t
  )
 
+;; Aspel
+(require 'ispell)
+(setq ispell-program-name "aspell")
+
 ;; Package: clean-aindent-mode
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
