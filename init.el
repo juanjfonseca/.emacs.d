@@ -10,7 +10,6 @@
 (setq delete-by-moving-to-trash t)      ; Delete by moving to trash.
 (setq visible-bell t)
 (size-indication-mode t)
-(global-hl-line-mode t)
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
@@ -258,7 +257,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (zzz-to-char avy color-theme-solarized fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (evil zzz-to-char avy color-theme-solarized fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")

@@ -13,7 +13,7 @@ projectile-bookmarks.eld
 projectile.cache
 recentf
 saved-places
-*.desktop
+*.desktop*
 
 # directories
 auto-save-list/
