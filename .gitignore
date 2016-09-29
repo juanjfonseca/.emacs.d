@@ -14,6 +14,10 @@ projectile.cache
 recentf
 saved-places
 *.desktop*
+GPATH
+GRTAGS
+GSYMS
+GTAGS
 
 # directories
 auto-save-list/
