@@ -60,12 +60,12 @@
     popup
     projectile
     smartparens
+    solarized-theme
     swiper
     undo-tree
     volatile-highlights
     ws-butler
     yasnippet
-    zenburn-theme
     zygospore
     zzz-to-char))
 
