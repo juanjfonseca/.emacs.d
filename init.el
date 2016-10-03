@@ -2,15 +2,14 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(tool-bar-mode -1)
-(menu-bar-mode -1)
 (blink-cursor-mode -1)
 (column-number-mode t)
-(global-linum-mode t)
-(setq delete-by-moving-to-trash t)      ; Delete by moving to trash.
+(global-hl-line-mode t)
+(menu-bar-mode -1)
+(setq delete-by-moving-to-trash t)
 (setq visible-bell t)
 (size-indication-mode t)
-(global-hl-line-mode t)
+(tool-bar-mode -1)
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
@@ -260,7 +259,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (solarized-theme evil zzz-to-char avy color-theme-solarized fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (solarized-theme zzz-to-char avy color-theme-solarized fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
