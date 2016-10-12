@@ -2,9 +2,9 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-theme 'wombat)
 (blink-cursor-mode -1)
 (column-number-mode t)
-(global-hl-line-mode t)
 (menu-bar-mode -1)
 (setq delete-by-moving-to-trash t)
 (setq visible-bell t)
@@ -254,14 +254,13 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (solarized-theme zzz-to-char avy color-theme-solarized fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (zzz-to-char avy fic-mode fixmee clang-format zygospore yasnippet ws-butler volatile-highlights undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags helm-cscope ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(todo-highlight-item t)
