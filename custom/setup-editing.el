@@ -105,9 +105,6 @@
 
 (define-key yas-keymap (kbd "C-e") 'yas/goto-end-of-active-field)
 (define-key yas-keymap (kbd "C-a") 'yas/goto-start-of-active-field)
-;; (define-key yas-minor-mode-map [(tab)] nil)
-;; (define-key yas-minor-mode-map (kbd "TAB") nil)
-;; (define-key yas-minor-mode-map (kbd "C-<tab>") 'yas-expand)
 ;; No dropdowns please, yas
 (setq yas-prompt-functions '(yas/ido-prompt yas/completing-prompt))
 
@@ -177,25 +174,6 @@ line instead."
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
-
-;; kill a line, including whitespace characters until next non-whiepsace character
-;; of next line
-(defadvice kill-line (before check-position activate)
-  (if (member major-mode
-              '(emacs-lisp-mode scheme-mode lisp-mode
-                                c-mode c++-mode objc-mode
-                                latex-mode plain-tex-mode))
-      (if (and (eolp) (not (bolp)))
-          (progn (forward-char 1)
-                 (just-one-space 0)
-                 (backward-char 1)))))
-
-;; taken from prelude-editor.el
-;; automatically indenting yanked text if in programming-modes
-(defvar yank-indent-modes
-  '(LaTeX-mode TeX-mode)
-  "Modes in which to indent regions that are yanked (or yank-popped).
-Only modes that don't derive from `prog-mode' should be listed here.")
 
 (defvar yank-indent-blacklisted-modes
   '(python-mode slim-mode haml-mode)

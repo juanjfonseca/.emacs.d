@@ -1,16 +1,18 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(tool-bar-mode -1)
-(menu-bar-mode t)
-(load-theme 'wombat t)
-(blink-cursor-mode -1)
+(when window-system
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (blink-cursor-mode -1)
+  (tooltip-mode -1))
 (column-number-mode t)
 (global-linum-mode t)
+(size-indication-mode t)
 (setq delete-by-moving-to-trash t) ; Move deleted files to Recycle.
 (setq visible-bell t)
-(size-indication-mode t)
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
@@ -26,62 +28,133 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(setq gc-cons-threshold 100000000)
-(setq inhibit-startup-message t)
+;;; Bootstrap use-package
+;; Install use-package if it's not already installed.
+;; use-package is used to configure the rest of the packages.
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(defconst packages
-  '(anzu
-    async
-    avy
-    clean-aindent-mode
-    comment-dwim-2
-    company
-    dash
-    dtrt-indent
-    duplicate-thing
-    epl
-    function-args
-    ggtags
-    helm
-    helm-core
-    helm-gtags
-    helm-projectile
-    helm-swoop
-    iedit
-    magit
-    pkg-info
-    popup
-    projectile
-    smartparens
-    swiper
-    undo-tree
-    volatile-highlights
-    ws-butler
-    yasnippet
-    zygospore
-    zzz-to-char))
-
-(defun install-packages ()
-  "Install all required packages."
-  (interactive)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(install-packages)
-
-;; this variables must be set before load helm-gtags
-;; you can change to any prefix key of your choice
-(setq helm-gtags-prefix-key "\C-cg")
+;; From use-package README
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 
-(require 'setup-helm)
-(require 'setup-helm-gtags)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(use-package anzu
+  :ensure t)
+
+(use-package async
+  :ensure t)
+
+(use-package avy
+  :ensure t)
+
+(use-package clean-aindent-mode
+  :ensure t)
+
+(use-package comment-dwim-2
+  :ensure t)
+
+(use-package company
+  :ensure t
+  :config
+  (require 'company)
+  (add-hook 'after-init-hook 'global-company-mode)
+  (delete 'company-semantic company-backends)
+  ;; (define-key c-mode-map  [(tab)] 'company-complete)
+  ;; (define-key c++-mode-map  [(tab)] 'company-complete))
+  )
+(use-package dash
+  :ensure t)
+
+(use-package dtrt-indent
+  :ensure t)
+
+(use-package duplicate-thing
+  :ensure t)
+
+(use-package epl
+  :ensure t)
+
+(use-package function-args
+  :ensure t)
+
+(use-package ggtags
+  :ensure t)
+
+(use-package helm
+  :ensure t
+  :config
+  (require 'setup-helm))
+
+(use-package helm-core
+  :ensure t)
+
+(use-package helm-gtags
+  :ensure t
+  :init
+  ;; this variables must be set before load helm-gtags
+  ;; you can change to any prefix key of your choice
+  (setq helm-gtags-prefix-key "\C-cg")
+  :config
+  (require 'setup-helm-gtags))
+
+(use-package helm-projectile
+  :ensure t)
+
+(use-package helm-swoop
+  :ensure t)
+
+(use-package iedit
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+
+(use-package pkg-info
+  :ensure t)
+
+(use-package popup
+  :ensure t)
+
+(use-package projectile
+  :ensure t)
+
+(use-package smartparens
+  :ensure t)
+
+(use-package solarized-theme
+  :defer 10
+  :init
+  (setq solarized-use-variable-pitch nil)
+  :ensure t)
+
+(use-package swiper
+  :ensure t)
+
+(use-package undo-tree
+  :ensure t)
+
+(use-package volatile-highlights
+  :ensure t)
+
+(use-package ws-butler
+  :ensure t)
+
+(use-package yasnippet
+  :ensure t)
+
+(use-package zygospore
+  :ensure t)
+
+(use-package zzz-to-char
+  :ensure t)
+
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-my-modes)
@@ -93,20 +166,6 @@
 ;; function-args
 (require 'function-args)
 (fa-config-default)
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
-
-;; company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(delete 'company-semantic company-backends)
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
-
-;; company-c-headers
-;; (add-to-list 'company-backends 'company-c-headers)
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -193,3 +252,25 @@
 
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
+ '(package-selected-packages
+   (quote
+    (solarized-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+ '(size-indication-mode t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
