@@ -175,6 +175,14 @@ line instead."
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
+;; taken from prelude-editor.el
+;; automatically indenting yanked text if in programming-modes
+(defvar yank-indent-modes
+  '(LaTeX-mode TeX-mode)
+  "Modes in which to indent regions that are yanked (or yank-popped).
+Only modes that don't derive from `prog-mode' should be listed here.")
+
+
 (defvar yank-indent-blacklisted-modes
   '(python-mode slim-mode haml-mode)
   "Modes for which auto-indenting is suppressed.")
