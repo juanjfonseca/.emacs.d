@@ -5,7 +5,8 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode -1)
-  (tooltip-mode -1))
+  (tooltip-mode -1)
+  (load-theme 'wombat))
 (column-number-mode t)
 (global-linum-mode t)
 (size-indication-mode t)
@@ -55,6 +56,9 @@
   :ensure t)
 
 (use-package clean-aindent-mode
+  :ensure t)
+
+(use-package cmake-mode
   :ensure t)
 
 (use-package comment-dwim-2
@@ -126,12 +130,6 @@
   :ensure t)
 
 (use-package smartparens
-  :ensure t)
-
-(use-package solarized-theme
-  :defer 10
-  :init
-  (setq solarized-use-variable-pitch nil)
   :ensure t)
 
 (use-package swiper
@@ -259,13 +257,12 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
  '(package-selected-packages
    (quote
-    (solarized-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
