@@ -1,12 +1,12 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
 (when window-system
+  (load-theme 'misterioso)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode -1)
-  (tooltip-mode -1)
-  (load-theme 'leuven))
+  (tooltip-mode -1))
 (column-number-mode t)
 (global-linum-mode t)
 (size-indication-mode t)
@@ -255,6 +255,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-safe-themes
