@@ -5,7 +5,8 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode -1)
-  (tooltip-mode -1))
+  (tooltip-mode -1)
+  (load-theme 'leuven))
 (column-number-mode t)
 (global-linum-mode t)
 (size-indication-mode t)
@@ -126,11 +127,6 @@
   :ensure t)
 
 (use-package projectile
-  :ensure t)
-
-(use-package railscasts-theme
-  :init
-  (setq railscasts-use-variable-pitch nil)
   :ensure t)
 
 (use-package smartparens
@@ -266,7 +262,7 @@
     ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
  '(package-selected-packages
    (quote
-    (railscasts-theme cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
