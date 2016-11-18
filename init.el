@@ -1,11 +1,10 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
-(when window-system
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (blink-cursor-mode -1)
-  (tooltip-mode -1))
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(blink-cursor-mode -1)
+(tooltip-mode -1)
 (column-number-mode t)
 (global-linum-mode t)
 (size-indication-mode t)
