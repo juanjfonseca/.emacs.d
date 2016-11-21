@@ -1,5 +1,7 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
