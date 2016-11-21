@@ -54,7 +54,10 @@
   :ensure t)
 
 (use-package clean-aindent-mode
-  :ensure t)
+  :ensure t
+  :config
+  (require 'clean-aindent-mode)
+  (add-hook 'prog-mode-hook 'clean-aindent-mode))
 
 (use-package cmake-mode
   :ensure t)
@@ -73,7 +76,9 @@
   :ensure t)
 
 (use-package dtrt-indent
-  :ensure t)
+  :ensure t
+  :config
+  (dtrt-indent-mode 1))
 
 (use-package duplicate-thing
   :ensure t)
@@ -82,7 +87,9 @@
   :ensure t)
 
 (use-package function-args
-  :ensure t)
+  :ensure t
+  :config
+  (fa-config-default))
 
 (use-package ggtags
   :ensure t)
@@ -105,7 +112,11 @@
   (require 'setup-helm-gtags))
 
 (use-package helm-projectile
-  :ensure t)
+  :ensure t
+  :config
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm)
+  (setq projectile-indexing-method 'alien))
 
 (use-package helm-swoop
   :ensure t)
@@ -123,10 +134,22 @@
   :ensure t)
 
 (use-package projectile
-  :ensure t)
+  :ensure t
+  :config
+  (require 'projectile)
+  (projectile-global-mode)
+  (setq projectile-enable-caching t))
 
 (use-package smartparens
-  :ensure t)
+  :ensure t
+  :config
+  (require 'smartparens-config)
+  (setq sp-base-key-bindings 'paredit)
+  (setq sp-autoskip-closing-pair 'always)
+  (setq sp-hybrid-kill-entire-symbol nil)
+  (sp-use-paredit-bindings)
+  (show-smartparens-global-mode +1)
+  (smartparens-global-mode 1))
 
 (use-package swiper
   :ensure t)
@@ -138,10 +161,14 @@
   :ensure t)
 
 (use-package ws-butler
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'ws-butler-mode))
 
 (use-package yasnippet
-  :ensure t)
+  :ensure t
+  :config
+  (yas-global-mode 1))
 
 (use-package zygospore
   :ensure t)
@@ -157,27 +184,11 @@
 
 (windmove-default-keybindings)
 
-;; function-args
-(require 'function-args)
-(fa-config-default)
-
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
-;; Available C style:
-;; “gnu”: The default style for GNU projects
-;; “k&r”: What Kernighan and Ritchie, the authors of C used in their book
-;; “bsd”: What BSD developers use, aka “Allman style” after Eric Allman.
-;; “whitesmith”: Popularized by the examples that came with Whitesmiths C, an early commercial C compiler.
-;; “stroustrup”: What Stroustrup, the author of C++ used in his book
-;; “ellemtel”: Popular C++ coding standards as defined by “Programming in C++, Rules and Recommendations,” Erik Nyquist and Mats Henricson, Ellemtel
-;; “linux”: What the Linux developers use for kernel development
-;; “python”: What Python developers use for extension modules
-;; “java”: The default style for java-mode (see below)
-;; “user”: When you want to define your own style
-(setq
- c-default-style "stroustrup" ;; set style to "linux"
- )
+;; C style “stroustrup”: What Stroustrup, the author of C++ used in his book
+(setq c-default-style "stroustrup")
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 
@@ -193,56 +204,13 @@
 ;; set appearance of a tab that is represented by 4 spaces
 (setq-default tab-width 4)
 
-;; Compilation
-(global-set-key (kbd "<f5>") (lambda ()
-                               (interactive)
-                               (setq-local compilation-read-command nil)
-                               (call-interactively 'compile)))
-
 ;; setup GDB
 (setq
  ;; use gdb-many-windows by default
  gdb-many-windows t
 
  ;; Non-nil means display source file containing the main routine at startup
- gdb-show-main t
- )
-
-;; Package: clean-aindent-mode
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
-
-;; Package: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode 1)
-
-;; Package: ws-butler
-(require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
-
-;; Package: yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; Package: smartparens
-(require 'smartparens-config)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
-
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
-
-;; Package: projejctile
-(require 'projectile)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-
-(require 'helm-projectile)
-(helm-projectile-on)
-(setq projectile-completion-system 'helm)
-(setq projectile-indexing-method 'alien)
+ gdb-show-main t)
 
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
