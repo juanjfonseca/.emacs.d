@@ -1,11 +1,10 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
-(when window-system
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (blink-cursor-mode -1)
-  (tooltip-mode -1))
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(blink-cursor-mode -1)
+(tooltip-mode -1)
 (column-number-mode t)
 (global-linum-mode t)
 (size-indication-mode t)
@@ -254,7 +253,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(blink-cursor-mode nil)
+ '(ansi-color-names-vector
+   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (adwaita)))
  '(custom-safe-themes
