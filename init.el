@@ -226,10 +226,6 @@
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (adwaita)))
- '(custom-safe-themes
-   (quote
-    ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" default)))
  '(package-selected-packages
    (quote
     (cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
