@@ -156,6 +156,9 @@
 (use-package swiper
   :ensure t)
 
+(use-package spacemacs-theme
+  :ensure t)
+
 (use-package undo-tree
   :ensure t)
 
