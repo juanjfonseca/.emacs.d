@@ -3,7 +3,6 @@
 ;; the display from flashing and changing at start up. ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (tool-bar-mode -1)
-(menu-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (tooltip-mode -1)
@@ -17,6 +16,8 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
+
+(server-start)
 
 ;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -153,10 +154,26 @@
   (show-smartparens-global-mode +1)
   (smartparens-global-mode 1))
 
-(use-package swiper
+(use-package spacemacs-theme
   :ensure t)
 
-(use-package spacemacs-theme
+(use-package srefactor
+  :ensure t
+  :config
+  (require 'srefactor)
+  (require 'srefactor-lisp)
+
+  ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
+  (semantic-mode 1) ;; -> this is optional for Lisp
+
+  (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
+  (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
+  (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
+  (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
+
+(use-package swiper
   :ensure t)
 
 (use-package undo-tree
@@ -233,9 +250,12 @@
  '(custom-safe-themes
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(ede-project-directories
+   (quote
+    ("/vagrant/stick/TddRef/Exercises/cpp/VideoStore" "/vagrant/stick/TddRef/Exercises/cpp/VideoStore/src")))
  '(package-selected-packages
    (quote
-    (spacemacs-theme cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (srefactor spacemacs-theme cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
