@@ -2,8 +2,6 @@
 ;; Setup the GUI as early as posible to keep           ;;
 ;; the display from flashing and changing at start up. ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (tooltip-mode -1)
 (column-number-mode t)
@@ -16,8 +14,6 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
-
-(server-start)
 
 ;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -154,9 +150,6 @@
   (show-smartparens-global-mode +1)
   (smartparens-global-mode 1))
 
-(use-package spacemacs-theme
-  :ensure t)
-
 (use-package srefactor
   :ensure t
   :config
@@ -241,7 +234,6 @@
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
@@ -250,7 +242,7 @@
     ("/vagrant/stick/TddRef/Exercises/cpp/VideoStore" "/vagrant/stick/TddRef/Exercises/cpp/VideoStore/src")))
  '(package-selected-packages
    (quote
-    (srefactor spacemacs-theme cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (srefactor cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
