@@ -192,9 +192,6 @@
   :config
   (yas-global-mode 1))
 
-(use-package zygospore
-  :ensure t)
-
 (use-package zzz-to-char
   :ensure t)
 
@@ -234,8 +231,6 @@
  ;; Non-nil means display source file containing the main routine at startup
  gdb-show-main t)
 
-;; Package zygospore
-(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
