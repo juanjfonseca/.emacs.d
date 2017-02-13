@@ -62,7 +62,7 @@
   (require 'clean-aindent-mode)
   (add-hook 'prog-mode-hook 'clean-aindent-mode))
 
-(use-package cmake-mode
+(use-package clang-format
   :ensure t)
 
 (use-package comment-dwim-2
@@ -252,10 +252,10 @@
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(ede-project-directories
    (quote
-    ("/vagrant/stick/TddRef/Exercises/cpp/VideoStore" "/vagrant/stick/TddRef/Exercises/cpp/VideoStore/src")))
+    ("/devspace/apx/apx_core/apx_core_project")))
  '(package-selected-packages
    (quote
-    (srefactor spacemacs-theme cmake-mode zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (clang-format srefactor spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
