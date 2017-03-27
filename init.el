@@ -63,7 +63,9 @@
   (add-hook 'prog-mode-hook 'clean-aindent-mode))
 
 (use-package clang-format
-  :ensure t)
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c c") 'clang-format-buffer))
 
 (use-package comment-dwim-2
   :ensure t)
