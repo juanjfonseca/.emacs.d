@@ -91,6 +91,11 @@
 (use-package epl
   :ensure t)
 
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+
 (use-package function-args
   :ensure t
   :config
@@ -142,7 +147,7 @@
   :ensure t
   :config
   (require 'projectile)
-  (projectile-global-mode)
+  (projectile-mode)
   (setq projectile-enable-caching t))
 
 (use-package smartparens
@@ -246,13 +251,11 @@
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(ede-project-directories
-   (quote
-    ("/devspace/apx/apx_core/apx_core_project")))
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(ede-project-directories (quote ("/devspace/apx/apx_core/apx_core_project")))
  '(package-selected-packages
    (quote
-    (clang-format srefactor spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (flycheck auto-highlight-symbol clang-format srefactor spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
