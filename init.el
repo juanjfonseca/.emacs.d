@@ -1,7 +1,7 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Setup the GUI as early as posible to keep           ;;
-;; the display from flashing and changing at start up. ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+;; Setup the GUI as early as posible to keep the display from flashing and changing at start up.
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
@@ -95,11 +95,6 @@
   :ensure t
   :init
   (global-flycheck-mode t))
-
-(use-package function-args
-  :ensure t
-  :config
-  (fa-config-default))
 
 (use-package ggtags
   :ensure t)
@@ -247,15 +242,18 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
     ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(ede-project-directories (quote ("/devspace/apx/apx_core/apx_core_project")))
+ '(minimap-mode t)
+ '(minimap-window-location (quote right))
  '(package-selected-packages
    (quote
-    (flycheck auto-highlight-symbol clang-format srefactor spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree smartparens magit iedit helm-swoop helm-projectile helm-gtags ggtags function-args duplicate-thing dtrt-indent company comment-dwim-2 clean-aindent-mode anzu)))
+    (flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit helm-swoop helm-projectile helm-gtags ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -264,3 +262,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(provide 'init)
+;;; init.el ends here
