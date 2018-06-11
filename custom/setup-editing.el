@@ -1,5 +1,8 @@
-;; GROUP: Editing -> Editing Basics
+;;; package --- Summary
+;;; Commentary:
+;;; GROUP: Editing -> Editing Basics
 
+;;; Code:
 (setq global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
       mark-ring-max 5000                ; increase kill ring to contains 5000 entries
       mode-require-final-newline t      ; add a newline to end of file
@@ -64,11 +67,6 @@
 ;; GROUP: Editing -> Undo -> Undo Tree
 (require 'undo-tree)
 (global-undo-tree-mode)
-
-;; Package: yasnippet
-;; GROUP: Editing -> Yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
 
 ;; PACKAGE: smartparens
 (require 'smartparens-config)
