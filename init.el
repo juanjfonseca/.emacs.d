@@ -7,7 +7,7 @@
 (blink-cursor-mode -1)
 (tooltip-mode -1)
 (column-number-mode t)
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 (size-indication-mode t)
 (setq delete-by-moving-to-trash t) ; Move deleted files to Recycle.
 (setq visible-bell t)
@@ -16,8 +16,6 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; end GUI setup ;;
 ;;;;;;;;;;;;;;;;;;;
-
-(server-start)
 
 ;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -104,9 +102,6 @@
   :config
   (require 'setup-helm))
 
-(use-package helm-core
-  :ensure t)
-
 (use-package helm-gtags
   :ensure t
   :init
@@ -156,8 +151,6 @@
   (show-smartparens-global-mode +1)
   (smartparens-global-mode 1))
 
-(use-package spacemacs-theme
-  :ensure t)
 
 (use-package srefactor
   :ensure t
