@@ -1,7 +1,6 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; GROUP: Editing -> Editing Basics
-
 ;;; Code:
 (setq global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
       mark-ring-max 5000                ; increase kill ring to contains 5000 entries
@@ -25,21 +24,6 @@
 (setq kill-ring-max 5000 ; increase kill-ring capacity
       kill-whole-line t  ; if NIL, kill whole line and move the next line up
       )
-
-;; show whitespace in diff-mode
-(add-hook 'diff-mode-hook (lambda ()
-                            (setq-local whitespace-style
-                                        '(face
-                                          tabs
-                                          tab-mark
-                                          spaces
-                                          space-mark
-                                          trailing
-                                          indentation::space
-                                          indentation::tab
-                                          newline
-                                          newline-mark))
-                            (whitespace-mode 1)))
 
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
@@ -74,20 +58,21 @@
 (setq sp-autoskip-closing-pair 'always)
 (setq sp-hybrid-kill-entire-symbol nil)
 (sp-use-paredit-bindings)
-
 (show-smartparens-global-mode +1)
 (smartparens-global-mode 1)
 
 ;; PACKAGE: comment-dwim-2
 (global-set-key (kbd "M-;") 'comment-dwim-2)
 
+;; PACKAGE: yasnippet
+(require 'yasnippet)
 ;; Jump to end of snippet definition
 (define-key yas-keymap (kbd "<return>") 'yas/exit-all-snippets)
 
 ;; Inter-field navigation
 (defun yas/goto-end-of-active-field ()
   (interactive)
-  (let* ((snippet (car (yas--snippets-at-point)))
+  (let* ((snippet (car (yas-active-snippets)))
          (position (yas--field-end (yas--snippet-active-field snippet))))
     (if (= (point) position)
         (move-end-of-line 1)
@@ -95,7 +80,7 @@
 
 (defun yas/goto-start-of-active-field ()
   (interactive)
-  (let* ((snippet (car (yas--snippets-at-point)))
+  (let* ((snippet (car (yas-active-snippets)))
          (position (yas--field-start (yas--snippet-active-field snippet))))
     (if (= (point) position)
         (move-beginning-of-line 1)
@@ -112,8 +97,6 @@
 ;; Wrap around region
 (setq yas-wrap-around-region t)
 
-(add-hook 'term-mode-hook (lambda() (setq yas-dont-activate t)))
-
 ;; PACKAGE: anzu
 ;; GROUP: Editing -> Matching -> Isearch -> Anzu
 (require 'anzu)
@@ -122,8 +105,8 @@
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
 ;; PACKAGE: iedit
-(setq iedit-toggle-key-default nil)
 (require 'iedit)
+(setq iedit-toggle-key-default nil)
 (global-set-key (kbd "C-;") 'iedit-mode)
 
 ;; PACKAGE: duplicate-thing
@@ -131,32 +114,8 @@
 (global-set-key (kbd "M-c") 'duplicate-thing)
 
 ;; Customized functions
-(defun prelude-move-beginning-of-line (arg)
-  "Move point back to indentation of beginning of line.
-
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line.
-Effectively toggle between the first non-whitespace character and
-the beginning of the line.
-
-If ARG is not nil or 1, move forward ARG - 1 lines first. If
-point reaches the beginning or end of the buffer, stop there."
-  (interactive "^p")
-  (setq arg (or arg 1))
-
-  ;; Move lines first
-  (when (/= arg 1)
-    (let ((line-move-visual nil))
-      (forward-line (1- arg))))
-
-  (let ((orig-point (point)))
-    (back-to-indentation)
-    (when (= orig-point (point))
-      (move-beginning-of-line 1))))
-
 (defadvice kill-ring-save (before slick-copy activate compile)
-  "When called interactively with no active region, copy a single
-line instead."
+  "When called interactively with no active region, copy a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
      (message "Copied line")
@@ -164,8 +123,7 @@ line instead."
            (line-beginning-position 2)))))
 
 (defadvice kill-region (before slick-cut activate compile)
-  "When called interactively with no active region, kill a single
-  line instead."
+  "When called interactively with no active region, kill a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
@@ -178,7 +136,6 @@ line instead."
   "Modes in which to indent regions that are yanked (or yank-popped).
 Only modes that don't derive from `prog-mode' should be listed here.")
 
-
 (defvar yank-indent-blacklisted-modes
   '(python-mode slim-mode haml-mode)
   "Modes for which auto-indenting is suppressed.")
@@ -187,13 +144,14 @@ Only modes that don't derive from `prog-mode' should be listed here.")
   "Threshold (# chars) over which indentation does not automatically occur.")
 
 (defun yank-advised-indent-function (beg end)
-  "Do indentation, as long as the region isn't too large."
+  "Do indentation, as long as the region isn't too large.
+BEG is begining of the region.
+END is the end of the region."
   (if (<= (- end beg) yank-advised-indent-threshold)
       (indent-region beg end nil)))
 
 (defadvice yank (after yank-indent activate)
-  "If current mode is one of 'yank-indent-modes,
-indent yanked text (with prefix arg don't indent)."
+  "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
            (not (member major-mode yank-indent-blacklisted-modes))
            (or (derived-mode-p 'prog-mode)
@@ -202,8 +160,7 @@ indent yanked text (with prefix arg don't indent)."
         (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defadvice yank-pop (after yank-pop-indent activate)
-  "If current mode is one of `yank-indent-modes',
-indent yanked text (with prefix arg don't indent)."
+  "If current mode is one of `yank-indent-modes', indent yanked text (with prefix arg don't indent)."
   (when (and (not (ad-get-arg 0))
              (not (member major-mode yank-indent-blacklisted-modes))
              (or (derived-mode-p 'prog-mode)
@@ -242,8 +199,7 @@ indent yanked text (with prefix arg don't indent)."
 ;; add duplicate line function from Prelude
 ;; taken from prelude-core.el
 (defun prelude-get-positions-of-line-or-region ()
-  "Return positions (beg . end) of the current line
-or region."
+  "Return positions (beg . end) of the current line or region."
   (let (beg end)
     (if (and mark-active (> (point) (mark)))
         (exchange-point-and-mark))
@@ -278,3 +234,4 @@ Position the cursor at it's beginning, according to the current mode."
 (global-set-key (kbd "M-o") 'open-line)
 
 (provide 'setup-editing)
+;;; setup-editing.el ends here

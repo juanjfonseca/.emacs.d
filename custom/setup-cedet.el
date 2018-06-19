@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (require 'cc-mode)
 (require 'semantic)
 
@@ -8,6 +11,7 @@
 (semantic-mode 1)
 
 (defun alexott/cedet-hook ()
+  "Define semantic keys."
   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
@@ -20,3 +24,4 @@
 (global-ede-mode)
 
 (provide 'setup-cedet)
+;;; setup-cedet.el ends here

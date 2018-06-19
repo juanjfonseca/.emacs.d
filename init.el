@@ -97,30 +97,6 @@
 (use-package ggtags
   :ensure t)
 
-(use-package helm
-  :ensure t
-  :config
-  (require 'setup-helm))
-
-(use-package helm-gtags
-  :ensure t
-  :init
-  ;; this variables must be set before load helm-gtags
-  ;; you can change to any prefix key of your choice
-  (setq helm-gtags-prefix-key "\C-cg")
-  :config
-  (require 'setup-helm-gtags))
-
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on)
-  (setq projectile-completion-system 'helm)
-  (setq projectile-indexing-method 'alien))
-
-(use-package helm-swoop
-  :ensure t)
-
 (use-package iedit
   :ensure t)
 
@@ -151,6 +127,8 @@
   (show-smartparens-global-mode +1)
   (smartparens-global-mode 1))
 
+(use-package smex
+  :ensure t)
 
 (use-package srefactor
   :ensure t
@@ -167,6 +145,43 @@
   (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
   (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
   (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
+
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode t)
+  (counsel-projectile-mode t)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-initial-inputs-alist ())
+  (setq enable-recursive-minibuffers t)
+  (global-set-key "\C-s" 'swiper)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  (global-set-key (kbd "<f6>") 'ivy-resume)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-c C-.") 'counsel-semantic-or-imenu)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+  (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+  (global-set-key (kbd "<f1> l") 'counsel-find-library)
+  (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+  (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  (global-set-key (kbd "C-c g") 'counsel-git)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-c k") 'counsel-ag)
+  (global-set-key (kbd "C-x l") 'counsel-locate)
+  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+
+(use-package counsel-gtags
+  :ensure t
+  :config
+  (add-hook 'c-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
+  (with-eval-after-load 'counsel-gtags
+    (define-key counsel-gtags-mode-map (kbd "C-c C-g t") 'counsel-gtags-find-definition)
+    (define-key counsel-gtags-mode-map (kbd "C-c C-g r") 'counsel-gtags-find-reference)
+    (define-key counsel-gtags-mode-map (kbd "C-c C-g s") 'counsel-gtags-find-symbol)
+    (define-key counsel-gtags-mode-map (kbd "M-,") 'counsel-gtags-go-backward)))
 
 (use-package swiper
   :ensure t)
@@ -190,6 +205,11 @@
 (use-package zzz-to-char
   :ensure t)
 
+(load "setup-cedet")
+(load "setup-editing")
+(load "setup-my-modes")
+(load "setup-my-keybinds")
+(load "setup-my-defuns")
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-my-modes)
@@ -219,12 +239,7 @@
 (setq-default tab-width 4)
 
 ;; setup GDB
-(setq
- ;; use gdb-many-windows by default
- gdb-many-windows t
-
- ;; Non-nil means display source file containing the main routine at startup
- gdb-show-main t)
+(setq gdb-many-windows t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -242,11 +257,13 @@
    (quote
     ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(ede-project-directories (quote ("/devspace/apx/apx_core/apx_core_project")))
+ '(global-display-line-numbers-mode t)
+ '(ivy-mode t)
  '(minimap-mode t)
  '(minimap-window-location (quote right))
  '(package-selected-packages
    (quote
-    (flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit helm-swoop helm-projectile helm-gtags ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
+    (counsel-gtags counsel-projectile counsel ivy flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces

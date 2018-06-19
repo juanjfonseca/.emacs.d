@@ -1,20 +1,27 @@
 
 ;; ----- smex-history -----
 (
- byte-recompile-directory
  byte-compile-file
- dired-do-byte-compile
  load-file
- counsel-fzf
- cd
- 5x5
+ replace-rectangle
+ string-insert-rectangle
+ imenu
+ counsel-semantic
+ counsel-imenu
 )
 
 ;; ----- smex-data -----
 (
  (counsel-fzf . 1)
- (load-file . 2)
+ (load-file . 3)
  (dired-do-byte-compile . 1)
- (byte-compile-file . 2)
+ (byte-compile-file . 15)
  (byte-recompile-directory . 1)
+ (ggtags-find-reference . 1)
+ (counsel-locate . 1)
+ (counsel-imenu . 1)
+ (counsel-semantic . 1)
+ (imenu . 1)
+ (string-insert-rectangle . 2)
+ (replace-rectangle . 2)
 )

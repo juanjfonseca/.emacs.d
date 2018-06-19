@@ -1,6 +1,7 @@
-(require 'generic-x)        ; Use Generic Modes For Obscure Languages.
-
-;;; Define mode
+;;; package --- Summary
+;;; Commentary:
+;;; GROUP: MODE -> Mode definitions
+;;; Code:
 (define-generic-mode
     'ttl-mode                ; name of the mode to create
   '(";")                     ; comments
@@ -75,3 +76,4 @@
 (auto-revert-mode)
 
 (provide 'setup-my-modes)
+;;; setup-my-modes.el ends here
