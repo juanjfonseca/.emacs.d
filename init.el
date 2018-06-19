@@ -145,11 +145,15 @@
   (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
   (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
 
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-mode t))
+
 (use-package ivy
   :ensure t
   :config
   (ivy-mode t)
-  (counsel-projectile-mode t)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-initial-inputs-alist ())
   (setq enable-recursive-minibuffers t)
