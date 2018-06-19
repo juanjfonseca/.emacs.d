@@ -38,7 +38,6 @@
 ;; From use-package README
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
 (require 'bind-key)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
@@ -178,9 +177,9 @@
   (add-hook 'c-mode-hook 'counsel-gtags-mode)
   (add-hook 'c++-mode-hook 'counsel-gtags-mode)
   (with-eval-after-load 'counsel-gtags
-    (define-key counsel-gtags-mode-map (kbd "C-c C-g t") 'counsel-gtags-find-definition)
-    (define-key counsel-gtags-mode-map (kbd "C-c C-g r") 'counsel-gtags-find-reference)
-    (define-key counsel-gtags-mode-map (kbd "C-c C-g s") 'counsel-gtags-find-symbol)
+    (define-key counsel-gtags-mode-map (kbd "M-g d") 'counsel-gtags-find-definition)
+    (define-key counsel-gtags-mode-map (kbd "M-g r") 'counsel-gtags-find-reference)
+    (define-key counsel-gtags-mode-map (kbd "M-g s") 'counsel-gtags-find-symbol)
     (define-key counsel-gtags-mode-map (kbd "M-,") 'counsel-gtags-go-backward)))
 
 (use-package swiper
