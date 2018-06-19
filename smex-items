@@ -1,0 +1,20 @@
+
+;; ----- smex-history -----
+(
+ byte-recompile-directory
+ byte-compile-file
+ dired-do-byte-compile
+ load-file
+ counsel-fzf
+ cd
+ 5x5
+)
+
+;; ----- smex-data -----
+(
+ (counsel-fzf . 1)
+ (load-file . 2)
+ (dired-do-byte-compile . 1)
+ (byte-compile-file . 2)
+ (byte-recompile-directory . 1)
+)
