@@ -75,13 +75,17 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (delete 'company-semantic company-backends))
 
-(use-package dash
+(use-package counsel
   :ensure t)
 
-(use-package dtrt-indent
+(use-package counsel-gtags
   :ensure t
   :config
-  (dtrt-indent-mode 1))
+  (add-hook 'c-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c++-mode-hook 'counsel-gtags-mode))
+
+(use-package counsel-projectile
+  :ensure t)
 
 (use-package duplicate-thing
   :ensure t)
@@ -97,34 +101,13 @@
 (use-package ggtags
   :ensure t)
 
-(use-package helm
-  :ensure t
-  :config
-  (require 'setup-helm))
-
-(use-package helm-gtags
-  :ensure t
-  :init
-  ;; this variables must be set before load helm-gtags
-  ;; you can change to any prefix key of your choice
-  (setq helm-gtags-prefix-key "\C-cg")
-  :config
-  (require 'setup-helm-gtags))
-
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on)
-  (setq projectile-completion-system 'helm)
-  (setq projectile-indexing-method 'alien))
-
-(use-package helm-swoop
-  :ensure t)
-
 (use-package iedit
   :ensure t)
 
-(use-package magit
+(use-package ivy
+   :ensure t)
+
+ (use-package magit
   :ensure t)
 
 (use-package pkg-info
@@ -150,23 +133,6 @@
   (sp-use-paredit-bindings)
   (show-smartparens-global-mode +1)
   (smartparens-global-mode 1))
-
-
-(use-package srefactor
-  :ensure t
-  :config
-  (require 'srefactor)
-  (require 'srefactor-lisp)
-
-  ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
-  (semantic-mode 1) ;; -> this is optional for Lisp
-
-  (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-  (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-  (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
-  (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
-  (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
-  (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
 
 (use-package swiper
   :ensure t)
@@ -221,10 +187,7 @@
 ;; setup GDB
 (setq
  ;; use gdb-many-windows by default
- gdb-many-windows t
-
- ;; Non-nil means display source file containing the main routine at startup
- gdb-show-main t)
+ gdb-many-windows t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -240,20 +203,45 @@
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
    (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(ede-project-directories (quote ("/devspace/apx/apx_core/apx_core_project")))
+ '(fci-rule-color "#073642")
+ '(global-display-line-numbers-mode t)
+ '(ivy-mode t)
  '(minimap-mode t)
  '(minimap-window-location (quote right))
  '(package-selected-packages
    (quote
-    (flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit helm-swoop helm-projectile helm-gtags ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
+    (counsel-gtags counsel-projectile counsel ivy flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#cb4b16")
+     (60 . "#b58900")
+     (80 . "#859900")
+     (100 . "#2aa198")
+     (120 . "#268bd2")
+     (140 . "#d33682")
+     (160 . "#6c71c4")
+     (180 . "#dc322f")
+     (200 . "#cb4b16")
+     (220 . "#b58900")
+     (240 . "#859900")
+     (260 . "#2aa198")
+     (280 . "#268bd2")
+     (300 . "#d33682")
+     (320 . "#6c71c4")
+     (340 . "#dc322f")
+     (360 . "#cb4b16"))))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
 (provide 'init)
 ;;; init.el ends here

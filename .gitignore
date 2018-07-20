@@ -1,4 +1,4 @@
-# files
+ # files
 **/archive-contents
 **/archive-contents.signed
 *.elc
@@ -13,6 +13,7 @@ projectile-bookmarks.eld
 projectile.cache
 recentf
 saved-places
+smex-items
 srecode-map.el
 
 # directories
