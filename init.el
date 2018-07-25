@@ -525,8 +525,8 @@ indent yanked text (with prefix arg don't indent)."
 ;;;;;;;;;;;;;;;
 ;; ECB Setup ;;
 ;;;;;;;;;;;;;;;
-(add-to-list 'load-path "/home/vagrant/.emacs.d/ecb")
-(load-file "/home/vagrant/.emacs.d/ecb/ecb.el")
+(add-to-list 'load-path "~/.emacs.d/ecb")
+(load-file "~/.emacs.d/ecb/ecb.el")
 (require 'ecb-autoloads)
 
 ;;;;;;;;;;;;;;;;;;;;;;
