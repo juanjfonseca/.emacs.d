@@ -45,7 +45,6 @@
 ;; From use-package README
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
 (require 'bind-key)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
@@ -135,7 +134,12 @@
   )
 
 (use-package counsel-projectile
-  :ensure t)
+  :ensure t
+  :init
+  (counsel-projectile-mode t)
+  :config
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  )
 
 (use-package duplicate-thing
   :ensure t
@@ -522,13 +526,6 @@ indent yanked text (with prefix arg don't indent)."
  ;; use gdb-many-windows by default
  gdb-many-windows t)
 
-;;;;;;;;;;;;;;;
-;; ECB Setup ;;
-;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/ecb")
-(load-file "~/.emacs.d/ecb/ecb.el")
-(require 'ecb-autoloads)
-
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Variables ;;
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -543,7 +540,7 @@ indent yanked text (with prefix arg don't indent)."
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (spacemacs-dark)))
+ '(custom-enabled-themes (quote (deeper-blue)))
  '(custom-safe-themes
    (quote
     ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
@@ -557,7 +554,7 @@ indent yanked text (with prefix arg don't indent)."
  '(minimap-window-location (quote right))
  '(package-selected-packages
    (quote
-    (counsel-gtags counsel-projectile counsel ivy flycheck auto-highlight-symbol clang-format spacemacs-theme zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
+    (counsel-gtags counsel-projectile counsel ivy flycheck auto-highlight-symbol clang-format zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
  '(size-indication-mode t)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
