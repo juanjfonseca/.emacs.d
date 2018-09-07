@@ -555,6 +555,7 @@ indent yanked text (with prefix arg don't indent)."
  '(package-selected-packages
    (quote
     (counsel-gtags counsel-projectile counsel ivy flycheck auto-highlight-symbol clang-format zzz-to-char zygospore yasnippet ws-butler volatile-highlights use-package undo-tree magit iedit ggtags duplicate-thing company comment-dwim-2 clean-aindent-mode anzu)))
+ '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
